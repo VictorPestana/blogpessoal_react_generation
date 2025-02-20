@@ -1,6 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useContext } from "react";
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const { handleLogout } = useContext(AuthContext);
+
+  function logout() {
+    handleLogout();
+    alert("O Usuário foi deslogado com sucesso!");
+    navigate("/");
+  }
+
   return (
     <>
       <div
@@ -13,7 +25,19 @@ function Navbar() {
             Blog Pessoal - Victor Pestana
           </Link>
           <div className="font-mono italic flex gap-4">
-            Postagens | Temas | Cadastrar Tema | Perfil |<Link to="/login">Sair</Link>
+          <Link to='/postagens' className='hover:underline'>Postagens</Link>|{" "}
+            <Link to="/temas" className="hover:underline">
+              Temas
+            </Link>{" "}
+            |{" "}
+            <Link to="/cadastrartema" className="hover:underline">
+              Cadastrar Tema
+            </Link>{" "}
+            | Perfil |
+            <Link to="" onClick={logout} className="hover:underline">
+              {" "}
+              Sair{" "}
+            </Link>
           </div>
         </div>
       </div>
