@@ -5,6 +5,7 @@ import { cadastrarUsuario } from '../../services/Service'
 import './Cadastro.css'
 import { RotatingLines } from 'react-loader-spinner'
 
+
 function Cadastro() {
 
   const navigate = useNavigate()
